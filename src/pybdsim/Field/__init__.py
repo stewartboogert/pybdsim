@@ -29,3 +29,9 @@ from .FieldPlotter import Plot2DXYFxFyFz
 from .FieldPlotter import Plot3DXY
 from .FieldPlotter import Plot3DXZ
 from .FieldPlotter import Plot3DPyVista
+
+try :
+    from ._EMSolverMeep import MeepCartesianRevolution
+    from ._EMSolverMeep import MeepCylindricalRevolution
+except ImportError :
+    pass
