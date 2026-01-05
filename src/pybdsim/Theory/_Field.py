@@ -15,7 +15,7 @@ from numpy import array as _array
 from numpy import reshape as _reshape
 from numpy import tensordot as _tensordot
 from numpy import logical_and as _logical_and
-from numpy import trapz as _trapz
+from numpy import trapezoid as _trapezoid
 from numpy import exp as _exp
 from numpy import zeros as _zeros
 
@@ -421,7 +421,7 @@ def V0(fd) :
     if fd['type'] == "1d" :
         z = fd['z']
         E = fd['Ez']
-        return _trapz(E,z)
+        return _trapezoid(E,z)
 
 def TransitTime(fd):
     if fd['type'] == "1d" :
@@ -429,7 +429,7 @@ def TransitTime(fd):
         E = fd['Ez']
 
         t = z/_c
-        return _trapz(E*_cos(fd['omega']*t),z)/V0(fd)
+        return _trapezoid(E*_cos(fd['omega']*t),z)/V0(fd)
 
 def TransitTime_TM010(gap, beta, frequency) :
     wavelength = _c/frequency
