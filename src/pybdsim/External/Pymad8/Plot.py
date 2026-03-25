@@ -182,7 +182,9 @@ class Optics:
 
     def Beta(self):
         """Plot the Beta functions for both planes and both Mad"""
-        _plt.figure(figsize=(10, 6))
+        fig = None
+        if len(_plt.get_fignums()) == 0 :
+            fig = _plt.figure(figsize=(10, 6))
 
         self.mad8_data.plotXY('S', 'BETX')
         self.mad8_data.plotXY('S', 'BETY')
@@ -190,12 +192,15 @@ class Optics:
         _plt.ylabel('Beta [m]')
         _plt.legend()
 
-        _m8.Plot.AddMachineLatticeToFigure(_plt.gcf(), self.mad8_data)
-        _plt.show()
+        if fig is not None :
+            _m8.Plot.AddMachineLatticeToFigure(_plt.gcf(), self.mad8_data)
+            _plt.show()
 
     def Alpha(self):
         """Plot the Alpha functions for both planes and both Mad"""
-        _plt.figure(figsize=(10, 6))
+        fig = None
+        if len(_plt.get_fignums()) == 0 :
+            fig = _plt.figure(figsize=(10, 6))
 
         self.mad8_data.plotXY('S', 'ALPHX')
         self.mad8_data.plotXY('S', 'ALPHY')
@@ -203,12 +208,15 @@ class Optics:
         _plt.ylabel('Alpha [rad]')
         _plt.legend()
 
-        _m8.Plot.AddMachineLatticeToFigure(_plt.gcf(), self.mad8_data)
-        _plt.show()
+        if fig is not None:
+            _m8.Plot.AddMachineLatticeToFigure(_plt.gcf(), self.mad8_data)
+            _plt.show()
 
     def Mu(self):
         """Plot the Mu functions for both planes and both Mad"""
-        _plt.figure(figsize=(10, 6))
+        fig = None
+        if len(_plt.get_fignums()) == 0 :
+            fig = _plt.figure(figsize=(10, 6))
 
         self.mad8_data.plotXY('S', 'MUX')
         self.mad8_data.plotXY('S', 'MUY')
@@ -216,12 +224,15 @@ class Optics:
         _plt.ylabel('Mu [?]')
         _plt.legend()
 
-        _m8.Plot.AddMachineLatticeToFigure(_plt.gcf(), self.mad8_data)
-        _plt.show()
+        if fig is not None:
+            _m8.Plot.AddMachineLatticeToFigure(_plt.gcf(), self.mad8_data)
+            _plt.show()
 
     def Disp(self):
         """Plot the Dispertion functions for both planes and both Mad"""
-        _plt.figure(1, figsize=(10, 6))
+        fig = None
+        if len(_plt.get_fignums()) == 0 :
+            fig = _plt.figure(1, figsize=(10, 6))
 
         self.mad8_data.plotXY('S', 'DX')
         self.mad8_data.plotXY('S', 'DY')
@@ -229,9 +240,15 @@ class Optics:
         _plt.ylabel('Disp [m]')
         _plt.legend()
 
-        _m8.Plot.AddMachineLatticeToFigure(_plt.gcf(), self.mad8_data)
+        if fig is not None :
+            _m8.Plot.AddMachineLatticeToFigure(_plt.gcf(), self.mad8_data)
 
-        _plt.figure(2, figsize=(10, 6))
+        return
+
+    def DispP(self):
+        fig = None
+        if len(_plt.get_fignums()) == 0 :
+            _plt.figure(2, figsize=(10, 6))
 
         self.mad8_data.plotXY('S', 'DPX')
         self.mad8_data.plotXY('S', 'DPY')
@@ -239,8 +256,9 @@ class Optics:
         _plt.ylabel('Disp_p [rad]')
         _plt.legend()
 
-        _m8.Plot.AddMachineLatticeToFigure(_plt.gcf(), self.mad8_data)
-        _plt.show()
+        if fig is not None :
+            _m8.Plot.AddMachineLatticeToFigure(_plt.gcf(), self.mad8_data)
+            _plt.show()
 
     def Sigma(self):
         """Plot the beam size and beam divergence functions for both planes and both Mad"""
