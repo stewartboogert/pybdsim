@@ -9,10 +9,17 @@ except ImportError:
     _useRoot = False
     pass
 
+try:
+    import uproot as _uproot
+except ImportError:
+    _useUproot = False
+    pass
+
 class RootEventAnalyser :
     def __init__(self):
         self.event = None
         self._persistent_data = {}
+        self._root_data = {}
 
     def init(self):
         pass
@@ -29,6 +36,21 @@ class RootEventAnalyser :
     def plot(self):
         pass
 
+    def get_root_data(self):
+        return self._root_data
+
+    def add_root_data(self, key, value, type):
+        value["type"] = type
+        self._root_data[key] = value
+
+    def write_root_data(self, filename):
+        with uproot.recreate(filename) as f:
+            for key, value in self._root_data.items():
+                if value["type"] == "th1":
+                    pass
+                elif value["type"] == "th2":
+                    pass
+                
     def get_persistent_data(self):
         return self._persistent_data
 
